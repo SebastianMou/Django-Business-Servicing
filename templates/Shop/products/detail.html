@@ -41,7 +41,54 @@
                 </div>
             </div>
         </div>
+        <h1>helo</h1>
     </main>
 
+    
+<!-----------------------------------------------------------------------INFORMATION--------------------------------------------------------------------------->
+
+<div class="container-fluid">		
+    <div class="col-md-12 product-info">
+        <ul id="myTab" class="nav nav-tabs nav_tabs">
+          
+          <li class="descr active"><a href="#service-one" data-toggle="tab" style="color: black;">Description</a></li>
+          <li class="produ"><a href="#service-two" data-toggle="tab" style="color: black;">Commentarios</a></li>
+          
+        </ul>
+      <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in " id="service-one">
+            <section class="product-info container-fluid">
+                <h1>{{ product.description_title }}</h1>
+
+                <h3>{{ product.title1 }}</h3>
+                <img style="width: 50%; height: 20%;" src="{{ product.img1.url }}" alt="">
+                <p>{{ product.description1 }}</p>
+            
+                <h3>{{ product.title2 }}</h3>
+                <img style="width: 50%; height: 20%;" src="{{ product.img2.url }}" alt="">
+                <p>{{ product.description2 }}</p>
+            
+                <h3>{{ product.title3 }}</h3>
+                <img style="width: 50%; height: 20%;" src="{{ product.img3.url }}" alt="">
+                <p>{{ product.description3 }}</p>
+            
+                <h3>{{ product.title4 }}</h3>
+                <img style="width: 50%; height: 20%;" src="{{ product.img4.url }}" alt="">
+                <p>{{ product.description4 }}</p>
+            </section>
+          </div>
+
+        <div class="tab-pane fade" id="service-two">
+          <section class="container-fluid">
+            <h1>sebas</h1>
+          </section>
+      </div>
+      <hr>
+    </div>
+  </div>
+  
+  
+  <!---------------------------------------X------------------------------------ INFORMATION---------------------------------------X--------------------------------------->
+  
 </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product, BottomFolder
 
 # Register your models here.
 @admin.register(Category)
@@ -14,9 +14,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['price', 'in_stock']
     prepopulated_fields = {'slug': ('title',)}
 
-
-
-
-
-
-
+@admin.register(BottomFolder)
+class BottomFolderAdmin(admin.ModelAdmin):
+    list_display = ['description_folder', 'product1', 'useful_links1','contact1']

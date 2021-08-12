@@ -13,11 +13,6 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('Shop:category_list', args=[self.slug])
 
-
-    '''
-    def get_absolute_url(self):
-        return reverse("Shop:category_list", kwargs={"pk": self.pk})
-    '''
     def __str__(self):
         return self.name
 
@@ -35,6 +30,24 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    description_title = models.CharField(max_length=255, null=True)
+
+    title1 = models.CharField(max_length=255, null=True)
+    img1 = models.ImageField(upload_to='images/', null=True)
+    description1 = models.TextField(blank=True)
+
+    title2 = models.CharField(max_length=255, null=True)
+    img2 = models.ImageField(upload_to='images/', null=True)
+    description2 = models.TextField(blank=True)
+
+    title3 = models.CharField(max_length=255, null=True)
+    img3 = models.ImageField(upload_to='images/', null=True)
+    description3 = models.TextField(blank=True)
+
+    title4 = models.CharField(max_length=255, null=True)
+    img4 = models.ImageField(upload_to='images/', null=True)
+    description4 = models.TextField(blank=True)
+
     class Meta:
         verbose_name_plural = 'Products'
         ordering = ('-created',)
@@ -45,6 +58,29 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+class BottomFolder(models.Model):
+    description_folder = models.TextField(blank=True)
+
+    product1 = models.CharField(max_length=255)
+    product2 = models.CharField(max_length=255)
+    product3 = models.CharField(max_length=255)
+    product4 = models.CharField(max_length=255)
+
+    useful_links1 = models.CharField(max_length=255)
+    useful_links2 = models.CharField(max_length=255)
+    useful_links3 = models.CharField(max_length=255)
+    useful_links4 = models.CharField(max_length=255)
+
+    contact1 = models.CharField(max_length=255)
+    contact2 = models.CharField(max_length=255)
+    contact3 = models.CharField(max_length=255)
+    contact4 = models.CharField(max_length=255)
+
+    instagrm = models.CharField(max_length=255)
+    reddit = models.CharField(max_length=255)
+    facebook = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
 
 
-
+    def __str__(self):
+        return self.description_folder
