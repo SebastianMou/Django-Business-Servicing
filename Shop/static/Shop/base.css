@@ -9,4 +9,18 @@
     font-size: 400%;
 }
 
+
+#contact_link {
+    text-decoration: none;
+}
+
+#index_links {
+    text-decoration: none;
+    color: white;
+}
+
+#products_link {
+    text-decoration: none;
+    color: white;
+}
 /*--x--bottom follder----x---*/

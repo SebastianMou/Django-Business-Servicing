@@ -16,4 +16,4 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(BottomFolder)
 class BottomFolderAdmin(admin.ModelAdmin):
-    list_display = ['description_folder', 'product1', 'useful_links1','contact1']
+    list_display = ['description_folder', 'product1', 'useful_links1','contact1' , 'facebook']

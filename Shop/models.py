@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import URLField
 from django.urls import reverse
 
 class Category(models.Model):
@@ -62,24 +63,36 @@ class BottomFolder(models.Model):
     description_folder = models.TextField(blank=True)
 
     product1 = models.CharField(max_length=255)
+    product_Link1 = models.URLField(max_length=225, null=True)
     product2 = models.CharField(max_length=255)
+    product_Link2 = models.URLField(max_length=225, null=True)
     product3 = models.CharField(max_length=255)
+    product_Link3 = models.URLField(max_length=225, null=True)
     product4 = models.CharField(max_length=255)
+    product_Link4 = models.URLField(max_length=225, null=True)
 
     useful_links1 = models.CharField(max_length=255)
+    useful_links_link1 = models.URLField(max_length=255, null=True)
     useful_links2 = models.CharField(max_length=255)
+    seful_links_link2 = models.URLField(max_length=255, null=True)
     useful_links3 = models.CharField(max_length=255)
+    seful_links_link3 = models.URLField(max_length=255, null=True)
     useful_links4 = models.CharField(max_length=255)
+    seful_links_link4 = models.URLField(max_length=255, null=True)
 
     contact1 = models.CharField(max_length=255)
+    contact_link1 = models.URLField(max_length=225, null=True)
     contact2 = models.CharField(max_length=255)
+    contact_link2 = models.URLField(max_length=225, null=True)
     contact3 = models.CharField(max_length=255)
+    contact_link3 = models.URLField(max_length=225, null=True)
     contact4 = models.CharField(max_length=255)
+    contact_link4 = models.URLField(max_length=225, null=True)
 
-    instagrm = models.CharField(max_length=255)
-    reddit = models.CharField(max_length=255)
-    facebook = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
+    instagram = models.URLField(max_length=255, null=True)
+    reddit = models.URLField(max_length=255)
+    facebook = models.URLField(max_length=255)
+    email = models.URLField(max_length=255)
 
 
     def __str__(self):
