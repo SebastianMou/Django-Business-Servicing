@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from django.db.models.fields import URLField
 from django.urls import reverse
 
+class ProductsManager(models.Manager):
+    def get_queryset(self):
+        return super(ProductsManager, self).get_queryset().filter(is_active=True)
+
 class Category(models.Model):
     name = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, unique=True)
@@ -25,11 +29,13 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/')
     slug = models.SlugField(max_length=255, unique=True)
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+    products = ProductsManager()
 
     description_title = models.CharField(max_length=255, null=True)
 

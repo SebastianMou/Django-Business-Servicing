@@ -12,7 +12,7 @@ def categories(request):
     }
 
 def all_products(request):
-    products = Product.objects.all() # query: storing all od the data inside this veriable
+    products = Product.products.all() # query: storing all od the data inside this veriable
     bottomFolder = BottomFolder.objects.all()
     return render(request, 'Shop/home.html', {'products': products, 'bottomFolder': bottomFolder})
 
