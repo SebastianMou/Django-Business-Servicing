@@ -17,12 +17,13 @@ def basket_add(request):
     basket = Basket(request)
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('productid'))
-        product_qty = int(request.POST.get('productqty'))
+        ##product_qty = int(request.POST.get('productqty'))
         try:
             product = Product.objects.get(id=product_id) 
         except:
             raise Http404                                
-        basket.add(product=product, qty=product_qty)
+        ##basket.add(product=product, qty=product_qty)
+        basket.add(product=product, qty=1)
 
         basketqty = basket.__len__()
         response = JsonResponse({'qty': basketqty})
