@@ -1,6 +1,5 @@
-
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.db.models.fields import URLField
 from django.urls import reverse
 
@@ -23,7 +22,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User, related_name='product_creator', on_delete=models.CASCADE)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='product_creator', on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255, default='admin')
     description = models.TextField(blank=True)
@@ -50,10 +49,6 @@ class Product(models.Model):
     title3 = models.CharField(max_length=255, null=True)
     img3 = models.ImageField(upload_to='images/', null=True)
     description3 = models.TextField(blank=True)
-
-    title4 = models.CharField(max_length=255, null=True)
-    img4 = models.ImageField(upload_to='images/', null=True)
-    description4 = models.TextField(blank=True)
 
     class Meta:
         verbose_name_plural = 'Products'

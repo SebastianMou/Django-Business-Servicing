@@ -1,3 +1,9 @@
-the card / basket code is not mine it is from "Very Academy" youtube channel 
-video "Python Django - Build an ecommerce basket with session handling", and i don't understand
-the code, if i don't understand the code then on my next connit i will change the basket
+Problemas con el profil/edit no Se está actualizando el nombre de usuario en la consola del admin
+
+Profile/delete_user abajo de examen
+Profile/delete_confirm abajo de examen
+
+Problema con los templates está empujando todo el contenido abajo del Nabor todo para abajo.
+Creo que es porque le puse css malo que no se actualizó luego por alguna razón se actualizó 
+unas horas después y hizo que se empujara todo para abajo ahora que lo quité no sé cuándo 
+se va actualizar otra vez

@@ -10,7 +10,7 @@ from .basket import Basket
 def basket_summary(request):
     basket = Basket(request)
     bottomFolder = BottomFolder.objects.all()
-    return render(request, 'Shop/basket/summary.html', {'basket': basket, 'bottomFolder': bottomFolder})
+    return render(request, 'basket/summary.html', {'basket': basket, 'bottomFolder': bottomFolder})
 
 
 def basket_add(request):
