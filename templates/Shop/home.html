@@ -4,19 +4,27 @@
 
 {% block content %}
     <main>
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="h1 fw-bold">Search, Read, Buy, Review</h1>
-                    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
-                        etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-                    <p>
-                        <a href="#" class="btn btn-primary my-2">Make an account</a>
-                    </p>
+        <!------------------------------------------ baner ------------------------------------------------>
+        
+        <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+            <li data-bs-target="#carouselDark" data-bs-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <img src="{{ baner.img_baner.url }}" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-sm-block">
+                <h1 class="text-white fw-bold">{{ baner.titel_baner }}</h1>
+                    <p class="text-white fw-bold">"{{ baner.description_baner }}"</p>
+                    <a class="text-white btn btn-outline-secondary" href="{{ baner.link }}">Comenzar</a>
                 </div>
             </div>
-        </section>
+        </div>
+        <br>
+        <br>
     
+        
+        <!---------------------x-------------------- baner -------------------------x---------------------->
+
         <div class="album py-5 bg-light">
             <div class="container">
         
@@ -47,8 +55,5 @@
         </div>
     
     </main>
-
-    <h1>sebastian groger</h1>
-    <h1>{{ bottomFolder.product1 }}</h1>
 
 {% endblock content %}

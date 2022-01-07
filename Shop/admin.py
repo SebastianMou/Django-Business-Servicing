@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, BottomFolder
+from .models import Category, Product, BottomFolder, Baner
 
 # Register your models here.
 @admin.register(Category)
@@ -13,6 +13,10 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['in_stock', 'is_active']
     list_editable = ['price', 'in_stock']
     prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Baner)
+class BanerAdmin(admin.ModelAdmin):
+    list_display = ['titel_baner', 'img_baner']
 
 @admin.register(BottomFolder)
 class BottomFolderAdmin(admin.ModelAdmin):

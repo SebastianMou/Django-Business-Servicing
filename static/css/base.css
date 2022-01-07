@@ -9,7 +9,6 @@
     font-size: 400%;
 }
 
-
 #contact_link {
     text-decoration: none;
 }
@@ -24,3 +23,7 @@
     color: white;
 }
 /*--x--bottom follder----x---*/
+
+.ratata {
+  color: red;
+}

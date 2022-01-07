@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-from .models import Category, Product, BottomFolder
+from .models import Category, Product, BottomFolder, Baner
 
 
 # Create your views here.
@@ -14,7 +14,8 @@ def categories(request):
 def all_products(request):
     products = Product.products.all() # query: storing all od the data inside this veriable
     bottomFolder = BottomFolder.objects.all()
-    return render(request, 'Shop/home.html', {'products': products, 'bottomFolder': bottomFolder})
+    baner = get_object_or_404(Baner)
+    return render(request, 'Shop/home.html', {'products': products, 'bottomFolder': bottomFolder, 'baner': baner})
     
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True)

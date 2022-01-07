@@ -60,6 +60,15 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+class Baner(models.Model):
+    img_baner = models.ImageField(upload_to='images/', null=True)
+    titel_baner = models.CharField(max_length=255)
+    description_baner = models.TextField(blank=True)
+    link = models.URLField(max_length=225, null=True)
+
+    def __str__(self):
+        return self.titel_baner
+
 class BottomFolder(models.Model):
     description_folder = models.TextField(blank=True)
 
