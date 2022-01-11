@@ -16,14 +16,139 @@
     <link rel="stylesheet" href="{% static 'css/detail.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/basket.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/cc9a8226bb.js" crossorigin="anonymous"></script>
 
 </head>
 <body class="bob">
+  <header> 
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom">
+        <div class="container-fluid px-md-4">
+            <div class="d-flex w-100 navbar-collapse">
+                <a class="navbar-brand d-flex-inline" href="/">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+                  <a class="navbar-brand" href="/">TESEJ</a>
+                </a>
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-none d-md-block fw500" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Library
+                            <i class="ps-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg></i>
+                        </a>
+                        <ul class="dropdown-menu rounded-0 border-0" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'Shop:all_products' %}">All</a></li>
+                            {% for c in categories %}
+                            <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+                                <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </div>
+                    <span class="fs15 fw500">Shop</span>
+                </button>
+  
+                {% if user.is_authenticated %}
+                <a type="button" role="button" href="{% url 'account:logout' %}"
+                    class="btn btn-outline-secondary border-0 basket-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-door-closed" viewBox="0 0 16 16">
+                            <path
+                                d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
+                            <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
+                        </svg>
+                    </div>
+                    <!--<span class="fs15 fw500">Logout</span>-->
+                </a>
+                {% else %}
+                <a type="button" role="button" href="{% url 'account:login' %}"
+                    class="btn btn-outline-secondary border-0 basket-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Login">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-door-closed" viewBox="0 0 16 16">
+                            <path
+                                d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
+                            <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
+                        </svg>
+                    </div>
+                    <!--<span class="fs15 fw500">Login</span>-->
+                </a>
+                {% endif %}
+  
+  
+                <a type="button" role="button" href=""
+                    class="btn btn-outline-secondary border-0 basket-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Account">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-person" viewBox="0 0 16 16">
+                            <path
+                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                        </svg>
+                    </div>
+                    <!--<span class="fs15 fw500">Account</span>-->
+                </a>
+  
+                <a type="button" role="button" href="{% url 'basket:basket_summary' %}"
+                    class="btn btn-outline-secondary border-0 basket-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Basket">
+                    {% with total_qty=basket|length %}
+                      <div id="basket-qty" class="basket-qty">
+                          {% if total_qty > 0 %}
+                            {{ total_qty }}
+                          {% else %}
+                            0
+                          {% endif %}
+                      </div>
+                    {% endwith %}
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                    </div>
+                    <!--<span class="fs15 fw500">Basket</span>-->
+                </a>
+            </div>
+            <div class="d-md-none d-lg-none d-xl-none">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li><a class="dropdown-item" href="{% url 'Shop:all_products' %}">All</a></li>
+                        {% for c in categories %}
+                        <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+                            <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <form class="d-flex w-100 d-md-none">
+                <input class="form-control me-2" type="search" placeholder="Search products or FAQ"
+                    aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+  </header>
 
-
+<!--
     <header class="pb-3"> 
       <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
           <div class="container-fluid px-md-4">
@@ -151,25 +276,100 @@
           </div>
       </nav>
   </header>
-
+-->
 
   <div id="content">{% block content %} {% endblock %}</div>
-    
+   
+  
+<!-- GRID -->
+
+  <div class="b-example-divider"></div>
+  <div class="container px-4 py-5" id="icon-grid">
+    <h2 class="pb-2 border-bottom">Icon grid</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#cpu-fill"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#calendar3"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#home"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#speedometer2"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#toggles2"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#geo-fill"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#tools"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Featured title</h4>
+          <p>Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!---->
+  </div>
+  <!---->
+
+
+
 <!----------------x------------------------ nav bar ---------------------x------------------------->
 
 
 
 
 
-<h1 class="ratata">sebastian</h1>
-<h1>jklflskdfklsjdfsdklfj</h1>
-
-
-
-
 <!-------------------------------------------bottom folder (footer)-------------------------------------------->
 <!-- Footer -->
-<footer id="groger" class="page-footer font-small mdb-color pt-4">
+<footer class="page-footer font-small navbar-dark bg-dark pt-4">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left">
@@ -262,7 +462,7 @@
       </div>
       <!-- Footer links -->
   
-      <hr>
+      <hr style="color: white;">
   
       <!-- Grid row -->
       <div class="row d-flex align-items-center">
@@ -271,7 +471,7 @@
         <div class="col-md-7 col-lg-8">
   
           <!--Copyright-->
-          <p class="text-center text-md-left">© 2020 Copyright:
+          <p style="color: white;" class="text-center text-md-left">© 2020 Copyright:
             <a href="https://mdbootstrap.com/">
               <strong> Kubist.com</strong>
             </a>

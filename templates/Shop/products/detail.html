@@ -6,38 +6,157 @@
 
 
 {% block content %}
+
+<style>
+
+
+    /*CARTA PRINCIPAS PRODUCTO*/
+    .card__img-holder--horizontal-left img, .card__img-holder img, .card__img-holder--horizontal-right img {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    .card__img-holder--horizontal-left, .card__img-holder--horizontal-right {
+        height: 242px;
+        width: 50%;
+        overflow: hidden;
+    }
+    .card__img-holder--horizontal-left h2, .card__img-holder h2, .card__img-holder--horizontal-right h2 {
+        z-index: 4;
+        position: absolute;
+        top: -20px;
+        color: white;
+        padding: 10px;
+        background: rgba(255, 255, 255, .1);
+        width: 100%;
+    }
+
+    .wrapper {
+        max-width: 400px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-right: 50px;
+    }
+    .wrapper--horizontal {
+        max-width: 800px;
+        display: inline-block;
+        margin: 0 auto;
+    }
+    .card__container {
+        box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, .3);
+        flex: 1 1 200px;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #fff;
+        position: relative;
+    }
+    .card__img-holder {
+        height: 240px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 5px 5px 0 0;
+    }
+    .card__img-holder--horizontal-left {
+        border-radius: 5px 0 5px 0px;
+        float: left;
+        margin: 0 15px 5px 0;
+    }
+    .card__img-holder--horizontal-right {
+        border-radius: 0 5px 0 5px;
+        float: right;
+        margin: 0 0 5px 15px;
+    }
+    .card__headline {
+        padding: 0 15px 0 15px;
+    }
+    .card__subheadline p {
+        color: #000;
+        font-weight: 100;
+        padding: 0 15px 13px 15px;
+    }
+    .card__footer-links {
+        display: flex;
+        align-content: center;
+        border-top: 1px solid #b6b6b6;
+        clear: both;
+    }
+    .card__footer-links a:first-child {
+        border-bottom-left-radius: 6px;
+    }
+    .card__footer-links a:last-child {
+        border-right: 0;
+        border-bottom-right-radius: 6px;
+    }
+    .card__footer-links a {
+        flex: 1 1;
+        text-align: center;
+        line-height: 40px;
+        text-decoration: none;
+        color: #212121;
+        padding: 15px 0;
+        border-right: 1px solid #b6b6b6;
+        transition: all 0.3s ease;
+    }
+    .card__footer-links a:hover {
+        background: #bf4141;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+
+    /*iCONS NAVBAR*/
+    @media (min-width: 992px){
+    .navbar svg {
+        margin-left : 1em;
+    }
+    }
+
+
+</style>
+
+<body style="background-color: #F8F9FA;">
+
+<!--------------------------------------teoba product page----------------------------------------->
+<br>
+<br>
+
 <div class="container">
-    <main class="pt-5">
-        <div class="row g-3">
-            <div class="col-md-5 col-lg-5 order-md-first bg-light">
-                <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{ product.image.url }}">
-            </div>
-            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
-                <h1 class="mb-0 h4">{{ product.title }}</h1>
-                <p><span class="lead">{{ product.author }}</span> (Author)</p>
-                <p>{{ product.description|slice:":355" }}...</p>
-                <div class="border">
-                    <div class="col border-bottom">
-                        <div class="row p-3">
-                            <div class="col-6">Hardback</div>
-                            <div class="col-6 text-end"><span class="h4 fw-bold"><small>MX</small> ${{ product.price }}</span></div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="row p-3">
-                            <div class="col-6">
-                                <p>Sebastian</p>
-                            </div>
-                            <div class="col-6 text-end">
-                                <button type="button" id="add-button" value="{{product.id}}" class="btn btn-secondary btn-sm">Add to basket</button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h1>helo</h1>
-    </main>
+  <div class="wrapper--center">
+    <div class="card__container">
+      <div class="card__img-holder--horizontal-left">
+        <img src="{{ product.image.url }}" alt="" />   
+      </div>
+      <div class="card__headline--horizontal">
+        <h2>{{ product.title }}</h2>
+        <p><span class="lead">{{ product.author }}</span> (Author)</p>
+      </div>
+      <div className="rating">
+        <input type="radio" name="rating" value="5" id="5" />
+        <label htmlFor="5">☆</label>
+        <input type="radio" name="rating" value="4" id="4" />
+        <label htmlFor="4">☆</label>
+        <input type="radio" name="rating" value="3" id="3" />
+        <label htmlFor="3">☆</label>
+        <input type="radio" name="rating" value="2" id="2" />
+        <label htmlFor="2">☆</label>
+        <input type="radio" name="rating" value="1" id="1" />
+        <label htmlFor="1">☆</label>
+    </div>
+      <div class="card__subheadline">
+        <p>{{ product.description|slice:":355" }}...</p>
+      </div>
+      <div class="card__footer-links">
+        <a div class="card__price"> ${{ product.price }}</a>
+        <button type="button" id="add-button" value="{{product.id}}">Add to basket</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----------------x----------------------teoba product page------------------------x----------------->
+
+
 
     
 <!-----------------------------------------------------------------------INFORMATION--------------------------------------------------------------------------->
@@ -71,7 +190,7 @@
     </div>
     </div>
 <!---------------------------------------X------------------------------------ INFORMATION---------------------------------------X--------------------------------------->
-
+</body>
 
 <script>
     $(document).on('click', '#add-button', function (e) {       // function the someone clicked the button add-button
