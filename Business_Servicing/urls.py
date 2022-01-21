@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Shop.urls', namespace='Shop')),
     path('basket/', include('basket.urls', namespace='basket')),
-    path('account/', include('account.urls', namespace='account'))
+    path('account/', include('account.urls', namespace='account')),
+    path('payment/', include('payment.urls', namespace='payment')),
 ]
 
 

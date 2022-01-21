@@ -1,3 +1,4 @@
+from unicodedata import decimal
 from django.db import models
 from django.conf import settings
 from django.db.models.fields import URLField
@@ -29,6 +30,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images/')
     slug = models.SlugField(max_length=255, unique=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
+    old_price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -41,14 +43,6 @@ class Product(models.Model):
     title1 = models.CharField(max_length=255, null=True)
     img1 = models.ImageField(upload_to='images/', null=True)
     description1 = models.TextField(blank=True)
-
-    title2 = models.CharField(max_length=255, null=True)
-    img2 = models.ImageField(upload_to='images/', null=True)
-    description2 = models.TextField(blank=True)
-
-    title3 = models.CharField(max_length=255, null=True)
-    img3 = models.ImageField(upload_to='images/', null=True)
-    description3 = models.TextField(blank=True)
 
     class Meta:
         verbose_name_plural = 'Products'
